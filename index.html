@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="bn" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bashar Cyber Cafe - Professional Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = { darkMode: 'class' }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+        body { font-family: 'Poppins', 'Hind Siliguri', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen transition-colors duration-300">
+
+    <!-- Login Section -->
+    <div id="login-section" class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-indigo-950 via-slate-900 to-blue-950">
+        <div class="bg-slate-900/90 backdrop-blur-md p-8 rounded-3xl w-full max-w-sm text-center shadow-2xl border border-slate-800">
+            <div class="w-16 h-16 bg-gradient-to-tr from-blue-600 to-indigo-500 text-white rounded-2xl mx-auto flex items-center justify-center text-2xl mb-4 shadow-lg shadow-blue-500/30">
+                <i class="fa-solid fa-laptop-code"></i>
+            </div>
+            <h2 class="text-2xl font-bold mb-1 text-white">Bashar Cyber Cafe</h2>
+            <p class="text-xs text-slate-400 mb-6">Operator Login Portal</p>
+            <form onsubmit="handleLogin(event)" class="space-y-4">
+                <input type="text" id="username" placeholder="Username / ইউজারনেম" required class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 text-sm text-white">
+                <input type="password" id="password" placeholder="Password / পাসওয়ার্ড" required class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 text-sm text-white">
+                <button class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 rounded-xl font-bold hover:opacity-90 transition shadow-lg shadow-blue-600/30">Login / প্রবেশ</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="main-portal" class="hidden p-4 md:p-8 space-y-6 max-w-7xl mx-auto">
+        <!-- Header -->
+        <header class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white p-6 rounded-3xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-4 border border-blue-800/50">
+            <div>
+                <h1 class="text-xl md:text-2xl font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-amber-400"></i> Bashar Cyber Cafe
+                </h1>
+                <p class="text-xs text-blue-200 mt-1" data-bn="প্রফেশনাল অনলাইন সার্ভিস ও আবেদন হাব" data-en="Professional Online Service & Application Hub">প্রফেশনাল অনলাইন সার্ভিস ও আবেদন হাব</p>
+            </div>
+            <div class="flex items-center gap-3 flex-wrap justify-center">
+                <!-- Language Switcher Button -->
+                <button onclick="toggleLanguage()" class="bg-blue-600/40 hover:bg-blue-600/60 border border-blue-500/50 text-white px-4 py-2 rounded-xl text-sm font-semibold transition flex items-center gap-2 shadow-lg">
+                    <i class="fa-solid fa-globe"></i> <span id="lang-btn-text">English</span>
+                </button>
+                <!-- Theme Toggle Button -->
+                <button onclick="toggleTheme()" class="bg-white/10 hover:bg-white/20 text-white p-2.5 rounded-xl transition text-sm flex items-center justify-center w-10 h-10 shadow-lg" title="Toggle Theme">
+                    <i id="theme-icon" class="fa-solid fa-sun"></i>
+                </button>
+                <!-- Logout Button -->
+                <button onclick="location.reload()" class="bg-red-500/80 hover:bg-red-600 text-white px-4 py-2 rounded-xl text-sm font-semibold transition flex items-center gap-2 shadow-lg">
+                    <i class="fa-solid fa-right-from-bracket"></i> <span data-bn="লগআউট" data-en="Logout">লগআউট</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Services Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Passport & NID -->
+            <div class="bg-slate-900 p-6 rounded-3xl shadow-md border border-slate-800 hover:border-blue-500/50 transition space-y-3">
+                <h3 class="font-bold text-blue-400 flex items-center gap-2 border-b border-slate-800 pb-3 text-base">
+                    <span class="w-8 h-8 rounded-xl bg-blue-950 text-blue-400 flex items-center justify-center"><i class="fa-solid fa-id-card"></i></span> 
+                    <span data-bn="পাসপোর্ট ও NID সেবা" data-en="Passport & NID Services">পাসপোর্ট ও NID সেবা</span>
+                </h3>
+                <div class="space-y-2">
+                    <a href="https://www.epassport.gov.bd/" target="_blank" class="flex items-center justify-between p-2.5 bg-slate-800/60 hover:bg-blue-950/60 rounded-xl text-sm text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-passport text-blue-400"></i> <span data-bn="পাসপোর্টের আবেদন" data-en="Passport Application">পাসপোর্টের আবেদন</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-blue-400"></i>
+                    </a>
+                    <a href="https://services.nidw.gov.bd/" target="_blank" class="flex items-center justify-between p-2.5 bg-slate-800/60 hover:bg-blue-950/60 rounded-xl text-sm text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-address-card text-blue-400"></i> <span data-bn="NID কার্ডের আবেদন" data-en="NID Card Application">NID কার্ডের আবেদন</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-blue-400"></i>
+                    </a>
+                    <a href="https://services.nidw.gov.bd/" target="_blank" class="flex items-center justify-between p-2.5 bg-slate-800/60 hover:bg-blue-950/60 rounded-xl text-sm text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-user-pen text-blue-400"></i> <span data-bn="NID কার্ড সংশোধনের আবেদন" data-en="NID Card Correction">NID কার্ড সংশোধনের আবেদন</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-blue-400"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Birth Registration & Education -->
+            <div class="bg-slate-900 p-6 rounded-3xl shadow-md border border-slate-800 hover:border-indigo-500/50 transition space-y-3">
+                <h3 class="font-bold text-indigo-400 flex items-center gap-2 border-b border-slate-800 pb-3 text-base">
+                    <span class="w-8 h-8 rounded-xl bg-indigo-950 text-indigo-400 flex items-center justify-center"><i class="fa-solid fa-graduation-cap"></i></span> 
+                    <span data-bn="জন্ম নিবন্ধন ও শিক্ষা" data-en="Birth & Education">জন্ম নিবন্ধন ও শিক্ষা</span>
+                </h3>
+                <div class="space-y-2">
+                    <a href="https://bdris.gov.bd/" target="_blank" class="flex items-center justify-between p-2.5 bg-slate-800/60 hover:bg-indigo-950/60 rounded-xl text-sm text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-baby text-pink-500"></i> <span data-bn="জন্ম নিবন্ধনের আবেদন" data-en="Birth Registration Application">জন্ম নিবন্ধনের আবেদন</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-indigo-400"></i>
+                    </a>
+                    <a href="https://bdris.gov.bd/" target="_blank" class="flex items-center justify-between p-2.5 bg-slate-800/60 hover:bg-indigo-950/60 rounded-xl text-sm text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-file-pen text-pink-500"></i> <span data-bn="জন্ম নিবন্ধন সংশোধনের আবেদন" data-en="Birth Registration Correction">জন্ম নিবন্ধন সংশোধনের আবেদন</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-indigo-400"></i>
+                    </a>
+                    <a href="http://www.xiadmission.gov.bd/" target="_blank" class="flex items-center justify-between p-2.5 bg-slate-800/60 hover:bg-indigo-950/60 rounded-xl text-sm text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-school text-indigo-400"></i> <span data-bn="কলেজে ভর্তির আবেদন" data-en="College Admission">কলেজে ভর্তির আবেদন</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-indigo-400"></i>
+                    </a>
+                    <a href="https://bteb.gov.bd/" target="_blank" class="flex items-center justify-between p-2.5 bg-slate-800/60 hover:bg-indigo-950/60 rounded-xl text-sm text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-file-lines text-amber-500"></i> <span data-bn="সার্টিফিকেট সংশোধন আবেদন" data-en="Certificate Correction">সার্টিফিকেট সংশোধন আবেদন</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-indigo-400"></i>
+                    </a>
+                    <a href="http://www.educationboardresults.gov.bd/" target="_blank" class="flex items-center justify-between p-2.5 bg-slate-800/60 hover:bg-indigo-950/60 rounded-xl text-sm text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-money-bill-transfer text-emerald-400"></i> <span data-bn="উপবৃত্তি টাকার আবেদন" data-en="Stipend Application">উপবৃত্তি টাকার আবেদন</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-indigo-400"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Job & Government Schemes -->
+            <div class="bg-slate-900 p-6 rounded-3xl shadow-md border border-slate-800 hover:border-purple-500/50 transition space-y-3">
+                <h3 class="font-bold text-purple-400 flex items-center gap-2 border-b border-slate-800 pb-3 text-base">
+                    <span class="w-8 h-8 rounded-xl bg-purple-950 text-purple-400 flex items-center justify-center"><i class="fa-solid fa-briefcase"></i></span> 
+                    <span data-bn="চাকরি ও সরকারি স্কিম" data-en="Job & Govt Schemes">চাকরি ও সরকারি স্কিম</span>
+                </h3>
+                <div class="space-y-2">
+                    <a href="https://alljobs.teletalk.com.bd/" target="_blank" class="flex items-center justify-between p-2 bg-slate-800/60 hover:bg-purple-950/60 rounded-xl text-xs text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-user-tie text-purple-400"></i> <span data-bn="চাকরির আবেদন (AllJobs)" data-en="Govt Job Application">চাকরির আবেদন (AllJobs)</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-purple-400"></i>
+                    </a>
+                    <a href="https://www.pbs.gov.bd/" target="_blank" class="flex items-center justify-between p-2 bg-slate-800/60 hover:bg-purple-950/60 rounded-xl text-xs text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-yellow-500"></i> <span data-bn="পল্লী বিদ্যুৎ কুটির আবেদন" data-en="Palli Bidyut Connection">পল্লী বিদ্যুৎ কুটির আবেদন</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-purple-400"></i>
+                    </a>
+                    <a href="https://www.mowca.gov.bd/" target="_blank" class="flex items-center justify-between p-2 bg-slate-800/60 hover:bg-purple-950/60 rounded-xl text-xs text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-hand-holding-dollar text-green-400"></i> <span data-bn="ভাতার আবেদন" data-en="Allowance Application">ভাতার আবেদন</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-purple-400"></i>
+                    </a>
+                    <a href="https://bmet.gov.bd/" target="_blank" class="flex items-center justify-between p-2 bg-slate-800/60 hover:bg-purple-950/60 rounded-xl text-xs text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-plane-departure text-sky-400"></i> <span data-bn="বিদেশের PDO ট্রেনিং আবেদন" data-en="Overseas PDO Training">বিদেশের PDO ট্রেনিং আবেদন</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-purple-400"></i>
+                    </a>
+                    <a href="https://tcb.gov.bd/" target="_blank" class="flex items-center justify-between p-2 bg-slate-800/60 hover:bg-purple-950/60 rounded-xl text-xs text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-store text-red-400"></i> <span data-bn="TCB ডিলার আবেদন" data-en="TCB Dealer Application">TCB ডিলার আবেদন</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-purple-400"></i>
+                    </a>
+                    <a href="https://jsc.gov.bd/" target="_blank" class="flex items-center justify-between p-2 bg-slate-800/60 hover:bg-purple-950/60 rounded-xl text-xs text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-wheelchair text-teal-400"></i> <span data-bn="প্রতিবন্ধী কার্ড আবেদন" data-en="Disabled Card Application">প্রতিবন্ধী কার্ড আবেদন</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-purple-400"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Land, Tax & License -->
+            <div class="bg-slate-900 p-6 rounded-3xl shadow-md border border-slate-800 hover:border-emerald-500/50 transition space-y-3">
+                <h3 class="font-bold text-emerald-400 flex items-center gap-2 border-b border-slate-800 pb-3 text-base">
+                    <span class="w-8 h-8 rounded-xl bg-emerald-950 text-emerald-400 flex items-center justify-center"><i class="fa-solid fa-landmark"></i></span> 
+                    <span data-bn="ভূমি, ট্যাক্স ও লাইসেন্স" data-en="Land, Tax & License">ভূমি, ট্যাক্স ও লাইসেন্স</span>
+                </h3>
+                <div class="space-y-2">
+                    <a href="https://ldtax.gov.bd/" target="_blank" class="flex items-center justify-between p-2.5 bg-slate-800/60 hover:bg-emerald-950/60 rounded-xl text-sm text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-file-invoice-dollar text-emerald-400"></i> <span data-bn="খাজনার আবেদন (ভূমি কর)" data-en="Land Tax Application">খাজনার আবেদন (ভূমি কর)</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-emerald-400"></i>
+                    </a>
+                    <a href="https://incometax.gov.bd/" target="_blank" class="flex items-center justify-between p-2.5 bg-slate-800/60 hover:bg-emerald-950/60 rounded-xl text-sm text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-receipt text-blue-400"></i> <span data-bn="TIN সার্টিফিকেট আবেদন" data-en="TIN Certificate Application">TIN সার্টিফিকেট আবেদন</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-emerald-400"></i>
+                    </a>
+                    <a href="https://www.minland.gov.bd/" target="_blank" class="flex items-center justify-between p-2.5 bg-slate-800/60 hover:bg-emerald-950/60 rounded-xl text-sm text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-map text-orange-400"></i> <span data-bn="BDS খতিয়ান বাহির" data-en="BDS Khatian Extraction">BDS খতিয়ান বাহির</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-emerald-400"></i>
+                    </a>
+                    <a href="https://pcc.police.gov.bd/" target="_blank" class="flex items-center justify-between p-2.5 bg-slate-800/60 hover:bg-emerald-950/60 rounded-xl text-sm text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-shield-halved text-indigo-400"></i> <span data-bn="ASI এডমিন কার্ড / PCC" data-en="ASI Admit / PCC Download">ASI এডমিন কার্ড / PCC</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-emerald-400"></i>
+                    </a>
+                    <a href="https://sylhetcity.gov.bd/" target="_blank" class="flex items-center justify-between p-2.5 bg-slate-800/60 hover:bg-emerald-950/60 rounded-xl text-sm text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-shop text-amber-500"></i> <span data-bn="ট্রেড লাইসেন্স আবেদন" data-en="Trade License Application">ট্রেড লাইসেন্স আবেদন</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-emerald-400"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Visa, Foreign & Driving -->
+            <div class="bg-slate-900 p-6 rounded-3xl shadow-md border border-slate-800 hover:border-sky-500/50 transition space-y-3">
+                <h3 class="font-bold text-sky-400 flex items-center gap-2 border-b border-slate-800 pb-3 text-base">
+                    <span class="w-8 h-8 rounded-xl bg-sky-950 text-sky-400 flex items-center justify-center"><i class="fa-solid fa-car"></i></span> 
+                    <span data-bn="ভিসা, বিদেশ ও ড্রাইভিং" data-en="Visa, Foreign & Driving">ভিসা, বিদেশ ও ড্রাইভিং</span>
+                </h3>
+                <div class="space-y-2">
+                    <a href="https://indianvisaonline.gov.bd/" target="_blank" class="flex items-center justify-between p-2.5 bg-slate-800/60 hover:bg-sky-950/60 rounded-xl text-sm text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-earth-asia text-green-400"></i> <span data-bn="ইন্ডিয়ান ভিসা আবেদন" data-en="Indian Visa Application">ইন্ডিয়ান ভিসা আবেদন</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-sky-400"></i>
+                    </a>
+                    <a href="https://www.eoimedicalbd.com/" target="_blank" class="flex items-center justify-between p-2.5 bg-slate-800/60 hover:bg-sky-950/60 rounded-xl text-sm text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-user-doctor text-red-400"></i> <span data-bn="বিদেশের মেডিকেল আবেদন" data-en="Overseas Medical Application">বিদেশের মেডিকেল আবেদন</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-sky-400"></i>
+                    </a>
+                    <a href="https://bsp.brta.gov.bd/" target="_blank" class="flex items-center justify-between p-2.5 bg-slate-800/60 hover:bg-sky-950/60 rounded-xl text-sm text-slate-300 font-medium transition group">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-id-badge text-blue-400"></i> <span data-bn="BRTA ড্রাইভিং লাইসেন্স আবেদন" data-en="BRTA Driving License Application">BRTA ড্রাইভিং লাইসেন্স আবেদন</span></span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-sky-400"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'bn';
+
+        function handleLogin(e) {
+            e.preventDefault();
+            if(document.getElementById('username').value === "onlineservice" && document.getElementById('password').value === "@Bashar04") {
+                document.getElementById('login-section').classList.add('hidden');
+                document.getElementById('main-portal').classList.remove('hidden');
+            } else { alert("Incorrect Username or Password / ভুল ইউজারনেম বা পাসওয়ার্ড!"); }
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'bn' ? 'en' : 'bn';
+            document.getElementById('lang-btn-text').innerText = currentLang === 'bn' ? 'English' : 'বাংলা';
+            document.getElementById('html-root').setAttribute('lang', currentLang);
+
+            const elements = document.querySelectorAll('[data-bn]');
+            elements.forEach(el => {
+                el.innerText = el.getAttribute(`data-${currentLang}`);
+            });
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            if (body.classList.contains('bg-slate-900')) {
+                body.classList.remove('bg-slate-900', 'text-slate-100');
+                body.classList.add('bg-slate-100', 'text-slate-800');
+                icon.className = "fa-solid fa-moon";
+            } else {
+                body.classList.remove('bg-slate-100', 'text-slate-800');
+                body.classList.add('bg-slate-900', 'text-slate-100');
+                icon.className = "fa-solid fa-sun";
+            }
+        }
+    </script>
+</body>
+</html>
